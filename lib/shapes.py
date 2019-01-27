@@ -16,17 +16,15 @@ class Shape(ABC):
 class Rectangle(Shape):
     """The class represents rectangle shape."""
 
-    def __init__(self, window: Display, color: Tuple[int, ...], location: Tuple[int, ...]) -> None:
+    def __init__(
+        self, window: Display, color: Tuple[int, ...], location: Tuple[int, ...]
+    ) -> None:
         self._window = window.set_resolution()
         self._color = color
         self._location = location
 
     def draw(self) -> None:
-        rect(
-            self._window.parent,
-            self._color,
-            self._location
-        )
+        rect(self._window.parent, self._color, self._location)
 
     @property
     def location(self) -> Tuple[int, ...]:
@@ -34,8 +32,5 @@ class Rectangle(Shape):
 
     @location.setter
     def location(self, location: Tuple[int, ...]) -> None:
-        if isinstance(
-                location,
-                tuple
-        ):
+        if isinstance(location, tuple):
             self._location = location
