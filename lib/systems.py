@@ -1,9 +1,11 @@
 from abc import ABC, abstractmethod
+from typing import Tuple
+
 from lib.engines import Engine
 from lib.navigation import Navigation
-from lib.properties import GameProperties
+from lib.properties import GameProperties, ScreenBorder, Border
 from lib.shapes import Shape
-from lib.visual import Display
+from lib.visual import Display, Window
 
 
 class System(ABC):
@@ -24,12 +26,13 @@ class PySystem(System):
     """Represents concrete system."""
 
     def __init__(self, engine: Engine, display: Display, shape: Shape) -> None:
-        self._engine = engine
-        self._display = display
-        self._window = display.set_resolution()
-        self._shape = shape
-        self._is_run = True
-        self._color = (0, 0, 0)
+        self._engine: Engine = engine
+        self._display: Display = display
+        self._border: Border = ScreenBorder(self._display.resolution())
+        self._window: Window = display.set_resolution()
+        self._shape: Shape = shape
+        self._is_run: bool = True
+        self._color: Tuple[int, ...] = (0, 0, 0)
 
     def start(self) -> None:
         self._engine.initialize()
@@ -48,13 +51,13 @@ class PySystem(System):
             if Navigation.is_quit(event):
                 self._is_run = False
 
-        if Navigation.is_left():
+        if Navigation.is_left() and self._border.is_top_left(GameProperties.axi_x):
             GameProperties.axi_x -= GameProperties.speed
-        if Navigation.is_right():
+        if Navigation.is_right() and self._border.is_top_right(GameProperties.axi_x, GameProperties.width):
             GameProperties.axi_x += GameProperties.speed
-        if Navigation.is_up():
+        if Navigation.is_up() and self._border.is_top_upper(GameProperties.axi_y):
             GameProperties.axi_y -= GameProperties.speed
-        if Navigation.is_down():
+        if Navigation.is_down() and self._border.is_top_lower(GameProperties.axi_y, GameProperties.height):
             GameProperties.axi_y += GameProperties.speed
 
         self._window.fill(self._color)

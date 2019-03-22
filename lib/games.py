@@ -19,21 +19,13 @@ class PyGame(Game):
     """Represents concrete game."""
 
     def __init__(self, name: str) -> None:
-        display: Display = GameDisplay(
-            resolution=(500, 500),
-            title=name
-        )
+        display: Display = GameDisplay(resolution=(500, 500), title=name)
         self._system = PySystem(
             GameEngine(delay=100),
             display,
-            Rectangle(
-                display,
-                color=(0, 0, 255),
-                location=GameProperties.coordinates()
-            )
+            Rectangle(display, color=(0, 0, 255), location=GameProperties.coordinates()),
         )
 
     def run(self) -> None:
         self._system.start()
         self._system.stop()
-

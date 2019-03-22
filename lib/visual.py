@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import Tuple
 from pygame import display, Surface
+from lib.properties import Resolution
 
 
 class Window(ABC):
@@ -19,6 +20,11 @@ class Window(ABC):
 
 class Display(ABC):
     """The class represents display abstraction."""
+
+    @abstractmethod
+    def resolution(self) -> Resolution:
+        """Returns game display resolution"""
+        pass
 
     @abstractmethod
     def set_resolution(self) -> Window:
@@ -40,12 +46,16 @@ class GameDisplay(Display):
     """The class represents game display."""
 
     def __init__(self, resolution: Tuple[int, int], title: str) -> None:
-        self._res = resolution
+        self._resolution = resolution
         self._title = title
+
+    def resolution(self) -> Resolution:
+        """Returns game display resolution."""
+        return Resolution(self._resolution)
 
     def set_resolution(self) -> Window:
         """Sets resolution for a game."""
-        return GameWindow(display.set_mode(self._res))
+        return GameWindow(display.set_mode(self._resolution))
 
     def set_title(self) -> None:
         """Sets title for a game."""
