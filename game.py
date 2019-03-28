@@ -1,9 +1,9 @@
-from lib.games import Game, PyGame
+from lib.games import Game, CubeGame
 
 
 def _run() -> None:
     """Runs a game."""
-    game: Game = PyGame('Cube game')
+    game: Game = CubeGame()
     game.run()
 
 

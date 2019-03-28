@@ -1,9 +1,9 @@
 from abc import ABC, abstractmethod
-from lib.engines import GameEngine
-from lib.properties import GameProperties
-from lib.systems import PySystem
-from lib.visual import GameDisplay, Display
-from lib.shapes import Rectangle
+from typing import Tuple
+from lib.model.properties import GameProperties, Resolution, Color
+from lib.controller.systems import PySystem
+from lib.model.visual import GameDisplay, Display
+from lib.model.shapes import Rectangle
 
 
 class Game(ABC):
@@ -18,14 +18,23 @@ class Game(ABC):
 class PyGame(Game):
     """Represents concrete game."""
 
-    def __init__(self, name: str) -> None:
-        display: Display = GameDisplay(resolution=(500, 500), title=name)
-        self._system = PySystem(
-            GameEngine(delay=100),
-            display,
-            Rectangle(display, color=(0, 0, 255), location=GameProperties.coordinates()),
-        )
+    def __init__(self, resolution: Resolution, color: Color, name: str) -> None:
+        display: Display = GameDisplay(resolution.as_sequence(), name)
+        self._system = PySystem(display, Rectangle(display, color.as_rgba(), GameProperties.coordinates()))
 
     def run(self) -> None:
         self._system.start()
         self._system.stop()
+
+
+class CubeGame(Game):
+    """Represents `Cube Game.`"""
+
+    _resolution: Tuple[int, ...] = (500, 500)
+    _color: Tuple[int, ...] = (0, 0, 255)
+
+    def __init__(self) -> None:
+        self._game = PyGame(Resolution(self._resolution), Color(*self._color), 'Cube Game')
+
+    def run(self) -> None:
+        self._game.run()

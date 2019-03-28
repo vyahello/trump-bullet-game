@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import Tuple
 from pygame import display, Surface
-from lib.properties import Resolution
+from lib.model.properties import Resolution
 
 
 class Window(ABC):
@@ -45,7 +45,7 @@ class Display(ABC):
 class GameDisplay(Display):
     """The class represents game display."""
 
-    def __init__(self, resolution: Tuple[int, int], title: str) -> None:
+    def __init__(self, resolution: Tuple[int, ...], title: str) -> None:
         self._resolution = resolution
         self._title = title
 

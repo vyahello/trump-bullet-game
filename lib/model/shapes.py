@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import Tuple
 from pygame.draw import rect
-from lib.visual import Display
+from lib.model.visual import Display
 
 
 class Shape(ABC):

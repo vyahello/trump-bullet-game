@@ -1,5 +1,10 @@
 from abc import ABC, abstractmethod
-from typing import Tuple
+from typing import Tuple, Callable
+
+
+class PropertyError(Exception):
+    """Represents game property error."""
+    pass
 
 
 class Border(ABC):
@@ -45,14 +50,34 @@ class GameProperties:
         )
 
 
+class Color:
+    """The class represents specific game color."""
+
+    def __init__(self, red: int, green: int, blue: int) -> None:
+        self._red = red
+        self._green = green
+        self._blue = blue
+
+    def as_rgba(self) -> Tuple[int, ...]:
+        """Returns RGBA color"""
+        return self._red, self._green, self._blue
+
+
 class Resolution:
     """The class represents specific resolution."""
 
     _bottom: int = 5
 
     def __init__(self, resolution: Tuple[int, ...]) -> None:
-        self._height: int = resolution[0]
-        self._width: int = resolution[1]
+        def save_resolution() -> Tuple[int, ...]:
+            if len(resolution) != 2:
+                raise PropertyError('Resolution should contain 2 values: width and height')
+            return resolution
+
+        self._resolution: Callable[[], Tuple[int, ...]] = save_resolution
+
+    def as_sequence(self) -> Tuple[int, ...]:
+        return self._resolution()
 
     @property
     def top_height(self) -> int:
@@ -61,7 +86,7 @@ class Resolution:
         Returns:
             specific height
         """
-        return self._height
+        return self._resolution()[0]
 
     @property
     def top_width(self) -> int:
@@ -70,7 +95,7 @@ class Resolution:
         Returns:
             specific width
         """
-        return self._width
+        return self._resolution()[1]
 
     @property
     def bottom_height(self) -> int:
