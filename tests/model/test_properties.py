@@ -33,6 +33,10 @@ def test_property_coordinates() -> None:
     assert len(GameProperty.coordinates()) == 4
 
 
+def test_calculate_jumper() -> None:
+    assert GameProperty.calculate_jumper() == 50
+
+
 def test_color_as_rgba(color: Color) -> None:
     assert color.as_rgba() == _rdba_color
 

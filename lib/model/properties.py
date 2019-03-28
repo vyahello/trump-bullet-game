@@ -51,6 +51,11 @@ class GameProperty:
             cls.height,
         )
 
+    @classmethod
+    def calculate_jumper(cls) -> int:
+        """Calculates game jumper."""
+        return cls.jump_count ** 2 / 2
+
 
 class Color:
     """The class represents specific game color."""

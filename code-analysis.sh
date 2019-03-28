@@ -2,33 +2,56 @@
 
 declare -a RESULT
 
+TESTS_DIR='tests/'
+RED_OUT='\033[0;31m'
+GREEN_OUT='\033[0;32m'
 
-function store_failures() {
+
+function store_failures {
     RESULT+=("$1")
 }
 
 
-function install_dependencies () {
-    pip install -r requirements.txt
+function remove_pycache {
+    local trash=".pytest_cache"
+    echo "Removing __pycache__ directories if present..."
+    ( find . -d -name "__pycache__" | xargs rm -r ) || echo -e "No __pycache__"
 }
 
 
-function run_code_analysis () {
+function clear_trash {
+    local trash='.pytest_cache'
+    echo "Removing pytest trash if present..."
+    [[ -d "$trash" ]] && rm -rf ${trash} && echo "Environment is clean!"
+}
+
+
+function install_dependencies {
+   echo "Installing python packages..." && ( pip install -r requirements.txt )
+}
+
+
+function run_unittests {
+    echo "Running unittests..." && ( pytest ${TESTS_DIR} )
+}
+
+
+function run_code_analysis {
     echo "Running code analysis..."
-    echo "Remove __pycache__ directories if present"
-    ( find . -d -name "__pycache__" | xargs rm -r ) || echo "No __pycache__"
-    echo "Installing python packages..." && install_dependencies || store_failures "Python packages installation is failed!"
-    echo "Running unittests..." && ./run-unittests.sh || store_failures "Unittests are failed!"
+    remove_pycache
+    install_dependencies || store_failures "Python packages installation is failed!"
+    run_unittests || store_failures "Unittests are failed!"
 
     if [[ ${#RESULT[@]} -ne 0 ]]; then
-        echo "There are some errors identified while analysing the code."
+        echo -e "${RED_OUT}There are some errors identified while analysing the code.${RED_OUT}"
         for item in "${RESULT[@]}"; do
-          echo "- ${item}"
+            echo "- ${item}"
         done
+        clear_trash
         exit 1
     fi
-    echo "Code analysis is passed."
+    clear_trash
+    echo -e "${GREEN_OUT}Code analysis is passed.${GREEN_OUT}"
 }
-
 
 run_code_analysis
