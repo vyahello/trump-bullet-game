@@ -47,3 +47,7 @@ class Navigation(Enum):
     @classmethod
     def _pressed_keys(cls) -> Tuple[int, ...]:
         return key.get_pressed()
+
+
+
+print(Navigation.up in Navigation)
