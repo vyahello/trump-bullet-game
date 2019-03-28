@@ -4,4 +4,3 @@ script:
     - ./code-analysis.sh
 notifications:
   email: false
-

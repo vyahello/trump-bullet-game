@@ -15,13 +15,15 @@ function install_dependencies () {
 
 function run_code_analysis () {
     echo "Running code analysis..."
+    echo "Remove __pycache__ directories if present"
+    ( find . -d -name "__pycache__" | xargs rm -r ) || echo "No __pycache__"
     echo "Installing python packages..." && install_dependencies || store_failures "Python packages installation is failed!"
-    echo "Running unittests" && ./run-unittests.sh || store_failures "Unittests are failed!"
+    echo "Running unittests..." && ./run-unittests.sh || store_failures "Unittests are failed!"
 
     if [[ ${#RESULT[@]} -ne 0 ]]; then
         echo "There are some errors identified while analysing the code."
-        for var in "${RESULT[@]}"; do
-          echo "- ${var}"
+        for item in "${RESULT[@]}"; do
+          echo "- ${item}"
         done
         exit 1
     fi

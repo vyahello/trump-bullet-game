@@ -3,7 +3,7 @@ from lib.model.navigation import Navigation
 
 
 def test_count_navigation_options() -> None:
-    assert len(Navigation) == 5
+    assert len(Navigation) == 6
 
 
 def test_navigation_option() -> None:

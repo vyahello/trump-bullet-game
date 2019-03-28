@@ -34,10 +34,12 @@ class Border(ABC):
 class GameProperty:
     """The class represents game coordinates."""
     axi_x: int = 50
-    axi_y: int = 50
-    width: int = 50
+    axi_y: int = 425
+    width: int = 40
     height: int = 60
-    speed: int = 10
+    speed: int = 5
+    is_jump: bool = False
+    jump_count: int = 10
 
     @classmethod
     def coordinates(cls) -> Tuple[int, ...]:
@@ -98,20 +100,11 @@ class Resolution:
         return self._resolution()[1]
 
     @property
-    def bottom_height(self) -> int:
-        """Defines width parameter for a resolution.
+    def bottom(self) -> int:
+        """Defines parameter for a bottom resolution.
 
         Returns:
-            specific width
-        """
-        return self._bottom
-
-    @property
-    def bottom_width(self) -> int:
-        """Defines width parameter for a resolution.
-
-        Returns:
-            specific width
+            specific bottom value
         """
         return self._bottom
 
@@ -123,13 +116,13 @@ class ScreenBorder(Border):
         self._resolution = resolution
 
     def is_top_left(self, axi_x: int) -> bool:
-        return axi_x > self._resolution.bottom_width
+        return axi_x > self._resolution.bottom
 
     def is_top_right(self, axi_x: int, width: int) -> bool:
-        return axi_x < self._resolution.top_width - width
+        return axi_x < self._resolution.top_width - width - self._resolution.bottom
 
     def is_top_upper(self, axi_y: int) -> bool:
-        return axi_y > self._resolution.bottom_height
+        return axi_y > self._resolution.bottom
 
     def is_top_lower(self, axi_y: int, height: int) -> bool:
-        return axi_y < self._resolution.top_height - height
+        return axi_y < self._resolution.top_height - height - self._resolution.bottom

@@ -5,7 +5,8 @@ from pygame import (
     K_UP,
     K_LEFT,
     K_RIGHT,
-    QUIT
+    QUIT,
+    K_SPACE,
 )
 from pygame.event import Event
 from pygame import key, event
@@ -19,6 +20,7 @@ class Navigation(Enum):
     left: int = K_LEFT
     right: int = K_RIGHT
     quit: int = QUIT
+    space: int = K_SPACE
 
     @classmethod
     def is_down(cls) -> int:
@@ -41,13 +43,13 @@ class Navigation(Enum):
         return event_.type == cls.quit.value
 
     @classmethod
+    def is_space(cls) -> bool:
+        return cls._pressed_keys()[cls.space.value]
+
+    @classmethod
     def events(cls) -> Iterable[Event]:
         return event.get()
 
     @classmethod
     def _pressed_keys(cls) -> Tuple[int, ...]:
         return key.get_pressed()
-
-
-
-print(Navigation.up in Navigation)

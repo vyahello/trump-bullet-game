@@ -57,6 +57,8 @@ class PySystem(System):
             GameProperty.axi_y -= GameProperty.speed
         if Navigation.is_down() and self._border.is_top_lower(GameProperty.axi_y, GameProperty.height):
             GameProperty.axi_y += GameProperty.speed
+        if Navigation.is_space():
+            GameProperty.is_jump = True
 
         self._window.fill(self._color.as_rgba())
         self._shape.draw()
