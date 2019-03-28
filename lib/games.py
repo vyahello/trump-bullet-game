@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 from typing import Tuple
-from lib.model.properties import GameProperties, Resolution, Color
+from lib.model.properties import GameProperty, Resolution, Color
 from lib.controller.systems import PySystem
 from lib.model.visual import GameDisplay, Display
 from lib.model.shapes import Rectangle
@@ -20,7 +20,7 @@ class PyGame(Game):
 
     def __init__(self, resolution: Resolution, color: Color, name: str) -> None:
         display: Display = GameDisplay(resolution.as_sequence(), name)
-        self._system = PySystem(display, Rectangle(display, color.as_rgba(), GameProperties.coordinates()))
+        self._system = PySystem(display, Rectangle(display, color.as_rgba(), GameProperty.coordinates()))
 
     def run(self) -> None:
         self._system.start()

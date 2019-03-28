@@ -31,7 +31,7 @@ class Border(ABC):
         pass
 
 
-class GameProperties:
+class GameProperty:
     """The class represents game coordinates."""
     axi_x: int = 50
     axi_y: int = 50

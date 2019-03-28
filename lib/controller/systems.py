@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from lib.controller.engines import Engine, GameEngine
 from lib.model.navigation import Navigation
-from lib.model.properties import GameProperties, ScreenBorder, Border, Color
+from lib.model.properties import GameProperty, ScreenBorder, Border, Color
 from lib.model.shapes import Shape
 from lib.model.visual import Display, Window
 
@@ -49,16 +49,16 @@ class PySystem(System):
             if Navigation.is_quit(event):
                 self._is_run = False
 
-        if Navigation.is_left() and self._border.is_top_left(GameProperties.axi_x):
-            GameProperties.axi_x -= GameProperties.speed
-        if Navigation.is_right() and self._border.is_top_right(GameProperties.axi_x, GameProperties.width):
-            GameProperties.axi_x += GameProperties.speed
-        if Navigation.is_up() and self._border.is_top_upper(GameProperties.axi_y):
-            GameProperties.axi_y -= GameProperties.speed
-        if Navigation.is_down() and self._border.is_top_lower(GameProperties.axi_y, GameProperties.height):
-            GameProperties.axi_y += GameProperties.speed
+        if Navigation.is_left() and self._border.is_top_left(GameProperty.axi_x):
+            GameProperty.axi_x -= GameProperty.speed
+        if Navigation.is_right() and self._border.is_top_right(GameProperty.axi_x, GameProperty.width):
+            GameProperty.axi_x += GameProperty.speed
+        if Navigation.is_up() and self._border.is_top_upper(GameProperty.axi_y):
+            GameProperty.axi_y -= GameProperty.speed
+        if Navigation.is_down() and self._border.is_top_lower(GameProperty.axi_y, GameProperty.height):
+            GameProperty.axi_y += GameProperty.speed
 
         self._window.fill(self._color.as_rgba())
         self._shape.draw()
-        self._shape.location = GameProperties.coordinates()
+        self._shape.location = GameProperty.coordinates()
         self._display.update()
