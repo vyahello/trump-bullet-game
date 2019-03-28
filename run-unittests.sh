@@ -10,7 +10,7 @@ clear_trash(){
 
 
 function run_unittests {
-    pytest ${TESTS_DIR}
+    pytest ${TESTS_DIR} || exit 1
 }
 
 
