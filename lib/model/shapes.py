@@ -7,6 +7,12 @@ from lib.model.visual import Display
 class Shape(ABC):
     """The class represents abstract shape interface."""
 
+    @property
+    @abstractmethod
+    def location(self) -> None:
+        """Defines shape location."""
+        pass
+
     @abstractmethod
     def draw(self) -> None:
         """Draws an abstract shape."""
