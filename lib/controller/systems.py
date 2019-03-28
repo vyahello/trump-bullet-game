@@ -26,7 +26,7 @@ class PySystem(System):
     def __init__(self, display: Display, shape: Shape) -> None:
         self._engine: Engine = GameEngine(delay=100)
         self._display: Display = display
-        self._border: Border = ScreenBorder(self._display.resolution())
+        self._border: Border = ScreenBorder(self._display.resolution)
         self._window: Window = display.set_resolution()
         self._shape: Shape = shape
         self._is_run: bool = True

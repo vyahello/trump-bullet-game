@@ -21,6 +21,7 @@ class Window(ABC):
 class Display(ABC):
     """The class represents display abstraction."""
 
+    @property
     @abstractmethod
     def resolution(self) -> Resolution:
         """Returns game display resolution"""
@@ -49,6 +50,7 @@ class GameDisplay(Display):
         self._resolution = resolution
         self._title = title
 
+    @property
     def resolution(self) -> Resolution:
         """Returns game display resolution."""
         return Resolution(self._resolution)
