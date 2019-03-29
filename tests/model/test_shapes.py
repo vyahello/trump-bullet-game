@@ -7,10 +7,10 @@ _color: Tuple[int, ...] = (0, 0, 0)
 _resolution: Tuple[int, ...] = (0, 0, 0)
 _location: Tuple[int, ...] = (0, 0, 0)
 _new_location: Tuple[int, ...] = (1, 1, 1)
-_title: str = 'title'
+_title: str = "title"
 
 
-@pytest.fixture(scope='module')
+@pytest.fixture(scope="module")
 def rectangle() -> Shape:
     return Rectangle(FakeDisplay(_resolution, _title), _color, _location)
 

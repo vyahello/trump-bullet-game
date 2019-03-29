@@ -14,17 +14,17 @@ _resolution: Tuple[int, ...] = (10, 20)
 _bottom: int = 5
 
 
-@pytest.fixture(scope='module')
+@pytest.fixture(scope="module")
 def color() -> Color:
     return Color(*_rdba_color)
 
 
-@pytest.fixture(scope='module')
+@pytest.fixture(scope="module")
 def resolution() -> Resolution:
     return Resolution(_resolution)
 
 
-@pytest.fixture(scope='module')
+@pytest.fixture(scope="module")
 def screen_border(resolution: Resolution) -> Border:
     return ScreenBorder(resolution)
 

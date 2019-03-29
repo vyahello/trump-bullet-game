@@ -4,6 +4,7 @@ from typing import Tuple, Callable
 
 class PropertyError(Exception):
     """Represents game property error."""
+
     pass
 
 
@@ -19,7 +20,7 @@ class Border(ABC):
     def is_top_right(self, axi_x: int, width: int) -> bool:
         """Defines if it is a top right border."""
         pass
-    
+
     @abstractmethod
     def is_top_upper(self, axi_y: int) -> bool:
         """Defines if it is a top upper border."""
@@ -33,23 +34,19 @@ class Border(ABC):
 
 class GameProperty:
     """The class represents game property."""
+
     axi_x: int = 50
     axi_y: int = 425
     width: int = 60
     height: int = 71
     speed: int = 5
-    is_jump: bool = False
     jump_count: int = 10
+    is_jump: bool = False
 
     @classmethod
     def coordinates(cls) -> Tuple[int, ...]:
         """Returns game coordinates."""
-        return (
-            cls.axi_x,
-            cls.axi_y,
-            cls.width,
-            cls.height,
-        )
+        return cls.axi_x, cls.axi_y, cls.width, cls.height
 
     @classmethod
     def calculate_jumper(cls) -> int:
@@ -78,7 +75,9 @@ class Resolution:
     def __init__(self, resolution: Tuple[int, ...]) -> None:
         def save_resolution() -> Tuple[int, ...]:
             if len(resolution) != 2:
-                raise PropertyError('Resolution should contain 2 values: width and height')
+                raise PropertyError(
+                    "Resolution should contain 2 values: width and height"
+                )
             return resolution
 
         self._resolution: Callable[[], Tuple[int, ...]] = save_resolution

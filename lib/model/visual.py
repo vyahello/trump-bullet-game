@@ -90,6 +90,13 @@ class GameWindow(Window):
         self._win.blit(source, area)
 
 
-def tick(frames: int) -> None:
-    """Ticks number of frames."""
-    time.Clock().tick(frames)
+class Clock:
+    """Represents frame rate clock."""
+
+    def __init__(self, frames: int) -> None:
+        self._clock = time.Clock()
+        self._frames = frames
+
+    def tick(self) -> None:
+        """Ticks number of frames."""
+        self._clock.tick(self._frames)

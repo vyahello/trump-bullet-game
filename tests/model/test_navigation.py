@@ -11,12 +11,15 @@ def test_navigation_option() -> None:
         assert isinstance(option, Navigation)
 
 
-@pytest.mark.parametrize("option", [
-    Navigation.up,
-    Navigation.down,
-    Navigation.left,
-    Navigation.right,
-    Navigation.quit,
-])
+@pytest.mark.parametrize(
+    "option",
+    [
+        Navigation.up,
+        Navigation.down,
+        Navigation.left,
+        Navigation.right,
+        Navigation.quit,
+    ],
+)
 def test_contains_navigation(option: Navigation) -> None:
     assert option in Navigation

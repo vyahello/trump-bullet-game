@@ -1,8 +1,38 @@
-from typing import List, Tuple
+from abc import ABC, abstractmethod
+from typing import List, Tuple, Callable
 from pygame import Surface, image
 
 
-class Image:
+class Image(ABC):
+    """Represent image abstraction."""
+
+    @abstractmethod
+    def load(self) -> Surface:
+        """Load an image."""
+        pass
+
+
+class ScreenImages(ABC):
+    """Represents images abstraction."""
+
+    def load_back_ground(self) -> Surface:
+        """Loads back ground."""
+        pass
+
+    def load_stand(self) -> Surface:
+        """Loads stand point."""
+        pass
+
+    def load_left_side(self) -> List[Surface]:
+        """Loads left side images."""
+        pass
+
+    def load_right_side(self) -> List[Surface]:
+        """Loads right side images."""
+        pass
+
+
+class GameImage(Image):
     """The class represents screen image."""
 
     def __init__(self, image_path: str) -> None:
@@ -12,13 +42,18 @@ class Image:
         return image.load(self._image)
 
 
-class GameImages:
+class GameImages(ScreenImages):
     """Represents game images."""
+
     def __init__(self, initial_path: str) -> None:
-        self._bg: Image = Image(f'{initial_path}pygame_bg.jpg')
-        self._stand: Image = Image(f'{initial_path}pygame_idle.png')
-        self._left: Tuple[Image, ...] = tuple(map(lambda n: Image(f'{initial_path}pygame_left_{n}.png'), range(1, 7)))
-        self._right: Tuple[Image, ...] = tuple(map(lambda n: Image(f'{initial_path}pygame_right_{n}.png'), range(1, 7)))
+        self._bg: GameImage = GameImage(f"{initial_path}pygame_bg.jpg")
+        self._stand: GameImage = GameImage(f"{initial_path}pygame_idle.png")
+        self._left: Callable[[], Tuple[GameImage, ...]] = lambda: tuple(
+            map(lambda n: GameImage(f"{initial_path}pygame_left_{n}.png"), range(1, 7))
+        )
+        self._right: Callable[[], Tuple[GameImage, ...]] = lambda: tuple(
+            map(lambda n: GameImage(f"{initial_path}pygame_right_{n}.png"), range(1, 7))
+        )
 
     def load_back_ground(self) -> Surface:
         return self._bg.load()
@@ -27,9 +62,7 @@ class GameImages:
         return self._stand.load()
 
     def load_left_side(self) -> List[Surface]:
-        return list(map(lambda image_item: image_item.load(), self._left))
+        return list(map(lambda image_item: image_item.load(), self._left()))
 
     def load_right_side(self) -> List[Surface]:
-        return list(map(lambda image_item: image_item.load(), self._right))
-
-
+        return list(map(lambda image_item: image_item.load(), self._right()))

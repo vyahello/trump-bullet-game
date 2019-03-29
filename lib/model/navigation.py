@@ -1,13 +1,6 @@
 from enum import Enum
 from typing import Tuple, Iterable
-from pygame import (
-    K_DOWN,
-    K_UP,
-    K_LEFT,
-    K_RIGHT,
-    QUIT,
-    K_SPACE,
-)
+from pygame import K_DOWN, K_UP, K_LEFT, K_RIGHT, QUIT, K_SPACE
 from pygame.event import Event
 from pygame import key, event
 

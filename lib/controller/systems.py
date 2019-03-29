@@ -1,11 +1,10 @@
 from abc import ABC, abstractmethod
-from lib.controller.engines import Engine, GameEngine
-from lib.model.character import Character
-from lib.model.images import GameImages
+from lib.controller.engines import Engine
+from lib.model.character import Trump
+from lib.model.images import ScreenImages, GameImages
 from lib.model.navigation import Navigation
 from lib.model.properties import GameProperty, ScreenBorder, Border
-from lib.model.shapes import Shape
-from lib.model.visual import Display, Window, tick
+from lib.model.visual import Display, Window, Clock
 
 
 class System(ABC):
@@ -22,62 +21,60 @@ class System(ABC):
         pass
 
 
-class PySystem(System):
-    """Represents concrete system."""
+class _InternalGameSystem(System):
+    """Represents concrete internal game system."""
 
-    def __init__(self, display: Display, shape: Shape) -> None:
-        self._engine: Engine = GameEngine(delay=50)
+    def __init__(
+        self,
+        engine: Engine,
+        display: Display,
+        images: ScreenImages,
+        character: Trump,
+    ) -> None:
+        self._engine: Engine = engine
         self._display: Display = display
-        self._border: Border = ScreenBorder(self._display.resolution)
+        self._images: ScreenImages = images
+        self._character: Trump = character
         self._window: Window = display.set_resolution()
-        self._shape: Shape = shape
+        self._border: Border = ScreenBorder(self._display.resolution)
+        self._clock = Clock(frames=30)
         self._is_run: bool = True
-        self._images: GameImages = GameImages("lib/images/")
-        self._character = Character()
 
     def start(self) -> None:
-        self._engine.initialize()
-        self._display.set_title()
-
         while self._is_run:
-            self._run()
+            self._engine.set_delay()
+            self._navigate_player()
+            self._draw_window()
 
     def stop(self) -> None:
         self._engine.quit()
 
-    def _run(self) -> None:
-        """Game runner proxy."""
-        self._engine.set_delay()
-        self._navigate_player()
-        self._draw_window()
-
     def _draw_window(self):
+        """Draws a window on a screen."""
         self._window.blit(self._images.load_back_ground(), area=(0, 0))
-        if self._character.anim_count + 1 >= 30:
-            self._character.anim_count = 0
+        if self._character.animation_count + 1 >= 30:
+            self._character.animation_count = 0
         if self._character.is_move_left:
             self._window.blit(
-                self._images.load_left_side()[self._character.anim_count // 5],
+                self._images.load_left_side()[self._character.animation_count // 5],
                 (GameProperty.axi_x, GameProperty.axi_y),
             )
-            self._character.anim_count += 1
+            self._character.animation_count += 1
         elif self._character.is_move_right:
             self._window.blit(
-                self._images.load_right_side()[self._character.anim_count // 5],
+                self._images.load_right_side()[self._character.animation_count // 5],
                 (GameProperty.axi_x, GameProperty.axi_y),
             )
-            self._character.anim_count += 1
+            self._character.animation_count += 1
         else:
             self._window.blit(
                 self._images.load_stand(), (GameProperty.axi_x, GameProperty.axi_y)
             )
-        self._shape.draw()
-        self._shape.location = GameProperty.coordinates()
         self._display.update()
 
     def _navigate_player(self) -> None:
         """Performs navigation process of a player."""
-        tick(frames=30)
+        self._clock.tick()
         for event in Navigation.events():
             if Navigation.is_quit(event):
                 self._is_run = False
@@ -108,3 +105,22 @@ class PySystem(System):
             else:
                 GameProperty.is_jump = False
                 GameProperty.jump_count = 10
+
+
+class UsableGameSystem(System):
+    """Represents concrete user system."""
+
+    def __init__(self, engine: Engine, display: Display) -> None:
+        self._engine: Engine = engine
+        self._display: Display = display
+        self._system: System = _InternalGameSystem(
+            engine, display, GameImages(initial_path="lib/images/"), Trump()
+        )
+
+    def start(self) -> None:
+        self._engine.initialize()
+        self._display.set_title()
+        self._system.start()
+
+    def stop(self) -> None:
+        self._system.stop()

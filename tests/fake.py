@@ -13,6 +13,9 @@ class FakeWindow(Window):
     def fill(self, color: Tuple[int, ...]) -> None:
         pass
 
+    def blit(self, source: Surface, area: Tuple[int, int]) -> None:
+        pass
+
 
 class FakeDisplay(Display):
     """Represents fake window display."""
