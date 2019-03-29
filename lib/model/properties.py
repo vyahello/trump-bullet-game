@@ -32,11 +32,11 @@ class Border(ABC):
 
 
 class GameProperty:
-    """The class represents game coordinates."""
+    """The class represents game property."""
     axi_x: int = 50
     axi_y: int = 425
-    width: int = 40
-    height: int = 60
+    width: int = 60
+    height: int = 71
     speed: int = 5
     is_jump: bool = False
     jump_count: int = 10

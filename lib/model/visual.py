@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 from typing import Tuple
-from pygame import display, Surface
+from pygame import display, Surface, time
 from lib.model.properties import Resolution
 
 
@@ -15,6 +15,11 @@ class Window(ABC):
     @abstractmethod
     def fill(self, color: Tuple[int, ...]) -> None:
         """Fills window with color."""
+        pass
+
+    @abstractmethod
+    def blit(self, source: Surface, area: Tuple[int, int]) -> None:
+        """Draws source on the surface."""
         pass
 
 
@@ -80,3 +85,11 @@ class GameWindow(Window):
 
     def fill(self, color: Tuple[int, ...]) -> None:
         self._win.fill(color)
+
+    def blit(self, source: Surface, area: Tuple[int, int]) -> None:
+        self._win.blit(source, area)
+
+
+def tick(frames: int) -> None:
+    """Ticks number of frames."""
+    time.Clock().tick(frames)

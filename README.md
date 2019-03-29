@@ -10,7 +10,7 @@ python game.py
 ```
 
 ## Demo
-![Screenshot](game.png)
+![Screenshot](lib/images/game.png)
 
 ## Run code analysis
 From the root directory of your shell run next command
