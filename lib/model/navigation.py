@@ -1,6 +1,6 @@
 from enum import Enum
 from typing import Tuple, Iterable
-from pygame import K_DOWN, K_UP, K_LEFT, K_RIGHT, QUIT, K_SPACE
+from pygame import K_DOWN, K_UP, K_LEFT, K_RIGHT, QUIT, K_SPACE, K_f
 from pygame.event import Event
 from pygame import key, event
 
@@ -14,6 +14,7 @@ class Navigation(Enum):
     right: int = K_RIGHT
     quit: int = QUIT
     space: int = K_SPACE
+    f: int = K_f
 
     @classmethod
     def is_down(cls) -> int:
@@ -38,6 +39,10 @@ class Navigation(Enum):
     @classmethod
     def is_space(cls) -> bool:
         return cls._pressed_keys()[cls.space.value]
+
+    @classmethod
+    def is_f(cls) -> bool:
+        return cls._pressed_keys()[cls.f.value]
 
     @classmethod
     def events(cls) -> Iterable[Event]:

@@ -1,5 +1,7 @@
-from typing import Tuple
+from typing import Tuple, List
 from pygame import Surface
+
+from lib.model.images import ScreenImages
 from lib.model.properties import Resolution
 from lib.model.visual import Display, Window
 
@@ -35,4 +37,20 @@ class FakeDisplay(Display):
         pass
 
     def update(self) -> None:
+        pass
+
+
+class FakeScreenImages(ScreenImages):
+    """Represents fake screen images display."""
+
+    def load_back_ground(self) -> Surface:
+        pass
+
+    def load_stand(self) -> Surface:
+        pass
+
+    def load_left_side(self) -> List[Surface]:
+        pass
+
+    def load_right_side(self) -> List[Surface]:
         pass

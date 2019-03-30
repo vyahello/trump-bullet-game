@@ -1,32 +1,11 @@
 from typing import Tuple
 import pytest
-from lib.model.properties import (
-    GameProperty,
-    Color,
-    Resolution,
-    PropertyError,
-    ScreenBorder,
-    Border,
-)
+from lib.model.properties import GameProperty, Color, Resolution, Border
+from lib import PropertyError
 
 _rdba_color: Tuple[int, ...] = (1, 2, 3)
 _resolution: Tuple[int, ...] = (10, 20)
 _bottom: int = 5
-
-
-@pytest.fixture(scope="module")
-def color() -> Color:
-    return Color(*_rdba_color)
-
-
-@pytest.fixture(scope="module")
-def resolution() -> Resolution:
-    return Resolution(_resolution)
-
-
-@pytest.fixture(scope="module")
-def screen_border(resolution: Resolution) -> Border:
-    return ScreenBorder(resolution)
 
 
 def test_property_coordinates() -> None:

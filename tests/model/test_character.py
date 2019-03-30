@@ -1,11 +1,6 @@
 import pytest
-from lib.model.character import Character, Trump
-from lib.model.properties import PropertyError
-
-
-@pytest.fixture(scope='module')
-def trump() -> Character:
-    return Trump(is_left=True, is_right=True)
+from lib.model.character import Character
+from lib import PropertyError
 
 
 def test_is_move_left(trump: Character) -> None:

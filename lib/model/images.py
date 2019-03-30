@@ -15,18 +15,22 @@ class Image(ABC):
 class ScreenImages(ABC):
     """Represents images abstraction."""
 
+    @abstractmethod
     def load_back_ground(self) -> Surface:
         """Loads back ground."""
         pass
 
+    @abstractmethod
     def load_stand(self) -> Surface:
         """Loads stand point."""
         pass
 
+    @abstractmethod
     def load_left_side(self) -> List[Surface]:
         """Loads left side images."""
         pass
 
+    @abstractmethod
     def load_right_side(self) -> List[Surface]:
         """Loads right side images."""
         pass

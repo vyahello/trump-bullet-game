@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from lib.model.properties import PropertyError
+from lib import PropertyError
 
 
 class Character(ABC):

@@ -3,7 +3,7 @@ from lib.model.navigation import Navigation
 
 
 def test_count_navigation_options() -> None:
-    assert len(Navigation) == 6
+    assert len(Navigation) == 7
 
 
 def test_navigation_option() -> None:
@@ -19,6 +19,8 @@ def test_navigation_option() -> None:
         Navigation.left,
         Navigation.right,
         Navigation.quit,
+        Navigation.left,
+        Navigation.f,
     ],
 )
 def test_contains_navigation(option: Navigation) -> None:
