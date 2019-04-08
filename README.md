@@ -1,7 +1,7 @@
 # Trump bullet game
 A simple action game written in python.
 
-[![Build Status](https://api.travis-ci.org/vyahello/trump-bullet.svg?branch=master)](https://travis-ci.org/vyahello/trump-bullet)
+[![Build Status](https://api.travis-ci.org/vyahello/trump-bullet-game.svg?branch=master)](https://travis-ci.org/vyahello/trump-bullet-game)
 
 # Run a program
 Run script from the root directory of the project:
