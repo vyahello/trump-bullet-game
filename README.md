@@ -2,6 +2,7 @@
 > A simple action game written in python.
 
 [![Build Status](https://api.travis-ci.org/vyahello/trump-bullet-game.svg?branch=master)](https://travis-ci.org/vyahello/trump-bullet-game)
+[![Coverage Status](https://coveralls.io/repos/github/vyahello/trump-bullet-game/badge.svg?branch=master)](https://coveralls.io/github/vyahello/trump-bullet-game?branch=master)
 
 **Tools**
 > - python3.6
@@ -43,6 +44,8 @@ After please open `test-report.html` to obtain test results.
 ## Development notes
 ### Release History
 
+* 0.2.0
+    * Add tests coverage
 * 0.1.0
     * Distribute first app release
 
