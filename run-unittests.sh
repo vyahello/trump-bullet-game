@@ -1,6 +1,6 @@
 #!/bin/bash
 
-TESTS_DIR='tests/'
+PROJECT_FILES="./"
 
 
 clear-trash(){
@@ -10,12 +10,18 @@ clear-trash(){
 
 
 function run-unittests {
-    pytest ${TESTS_DIR}
+    echo "Running unittests ..." && pytest
+}
+
+
+function run-black-analysis {
+    echo "Running black analysis ..." && ( black --check "${PROJECT_FILES}" )
 }
 
 
 function start-tests-coverage {
     run-unittests
+    run-black-analysis
     clear-trash
 }
 

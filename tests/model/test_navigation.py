@@ -1,5 +1,5 @@
 import pytest
-from game.model.navigation import Navigation
+from app.model.navigation import Navigation
 
 
 def test_count_navigation_options() -> None:

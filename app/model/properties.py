@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 from typing import Tuple, Callable
-from game import PropertyError
+from app import PropertyError
 
 
 class Border(ABC):

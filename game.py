@@ -1,4 +1,4 @@
-from game.games import Game, TrumpBulletGame
+from app.games import Game, TrumpBulletGame
 
 
 def _run_game() -> None:

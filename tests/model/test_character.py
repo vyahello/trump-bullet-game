@@ -1,6 +1,6 @@
 import pytest
-from game.model.character import Character
-from game import PropertyError
+from app.model.character import Character
+from app import PropertyError
 
 
 def test_is_move_left(trump: Character) -> None:

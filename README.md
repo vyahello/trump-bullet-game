@@ -99,7 +99,7 @@ Code analysis is passed.
 
 ### Test report
 
-Please open `test-report.html` file after execution of 
+Please open `test-report.html` file after the execution of tests
 
 ## Meta
 Author – Volodymyr Yahello vyahello@gmail.com

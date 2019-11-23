@@ -1,10 +1,10 @@
 import pytest
 
-from game.controller.systems import SystemProperty
-from game.model.bullet import Bullet
-from game.model.character import Character, Trump
-from game.model.properties import Resolution, Border, ScreenBorder, Color
-from game.model.shapes import Shape, Rectangle
+from app.controller.systems import SystemProperty
+from app.model.bullet import Bullet
+from app.model.character import Character, Trump
+from app.model.properties import Resolution, Border, ScreenBorder, Color
+from app.model.shapes import Shape, Rectangle
 from tests.fake import FakeScreenImages
 
 

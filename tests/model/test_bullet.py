@@ -1,6 +1,6 @@
 import pytest
-from game import PropertyError
-from game.model.bullet import Bullet
+from app import PropertyError
+from app.model.bullet import Bullet
 
 
 def test_bullet_velocity(bullet: Bullet) -> None:

@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import Tuple
 from pygame.draw import rect, circle
-from game.model.visual import Window
+from app.model.visual import Window
 
 
 class Shape(ABC):

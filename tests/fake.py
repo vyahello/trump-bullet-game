@@ -1,9 +1,9 @@
 from typing import Tuple, List
 from pygame import Surface
 
-from game.model.images import ScreenImages
-from game.model.properties import Resolution
-from game.model.visual import Display, Window
+from app.model.images import ScreenImages
+from app.model.properties import Resolution
+from app.model.visual import Display, Window
 
 
 class FakeWindow(Window):
