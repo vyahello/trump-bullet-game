@@ -27,7 +27,7 @@ function clear-trash {
 
 
 function install-dependencies {
-   echo "Installing python packages..." && ( pip install -r requirements.txt )
+   echo "Installing python packages..." && ( pip install --upgrade pip)  && ( pip install -r requirements.txt )
 }
 
 
