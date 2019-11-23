@@ -8,6 +8,7 @@
 > - pygame
 > - pytest
 > - travis CI
+> - coveralls
 
 ## Usage
 Run script from the root directory of the project:
@@ -30,7 +31,12 @@ If you need to run only unittests please execute following command:
 ```bash
 ➜ pytest
 ```
-It uses [pytest.ini](pytest.ini) config file to setup execution.
+Or run dedicated shell script:
+```bash
+➜ ./run-unittests.sh
+```
+
+Both approaches use [pytest.ini](pytest.ini) config file to setup execution.
 
 After please open `test-report.html` to obtain test results.
 

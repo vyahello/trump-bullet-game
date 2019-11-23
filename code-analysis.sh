@@ -27,7 +27,7 @@ function clear-trash {
 
 
 function install-dependencies {
-   echo "Installing python packages..." && ( pip install --upgrade pip)  && ( pip install -r requirements.txt )
+   echo "Installing python packages..." && ( pip install --upgrade pip )  && ( pip install -r requirements-dev.txt )
 }
 
 
@@ -36,12 +36,17 @@ function run-unittests {
 }
 
 
+function run-black-analysis {
+    echo "Running black analysis ..." && ( black --check "${PROJECT_FILES}" )
+}
+
+
 function run-code-analysis {
     echo "Running code analysis..."
     remove-pycache
     install-dependencies || store-failures "Python packages installation is failed!"
     run-unittests || store-failures "Unittests are failed!"
-
+    run-black-analysis || store-failures "black analysis is failed!"
 
     if [[ ${#RESULT[@]} -ne 0 ]]; then
         echo -e "${RED_OUT}There are some errors identified while analysing the code.${RED_OUT}"

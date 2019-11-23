@@ -1,7 +1,5 @@
 #!/bin/bash
 
-PROJECT_FILES="./"
-
 
 clear-trash(){
     local trash='.pytest_cache'
@@ -14,14 +12,8 @@ function run-unittests {
 }
 
 
-function run-black-analysis {
-    echo "Running black analysis ..." && ( black --check "${PROJECT_FILES}" )
-}
-
-
 function start-tests-coverage {
     run-unittests
-    run-black-analysis
     clear-trash
 }
 
