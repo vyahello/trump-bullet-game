@@ -26,7 +26,6 @@ From the root directory of your shell run next command:
 ```
 
 ### Test report
-
 If you need to run only unittests please execute following command:
 ```bash
 ➜ pytest
@@ -40,7 +39,14 @@ Both approaches use [pytest.ini](pytest.ini) config file to setup execution.
 
 After please open `test-report.html` to obtain test results.
 
-## Meta
+
+## Development notes
+### Release History
+
+* 0.1.0
+    * Distribute first app release
+
+### Meta
 Author – Volodymyr Yahello vyahello@gmail.com
 
 Distributed under the `MIT` license. See [LICENSE](LICENSE.md) for more information.
@@ -49,7 +55,7 @@ You can reach out me at:
 * [https://github.com/vyahello](https://github.com/vyahello)
 * [https://www.linkedin.com/in/volodymyr-yahello-821746127](https://www.linkedin.com/in/volodymyr-yahello-821746127)
 
-## Contributing
+### Contributing
 1. clone the repository
 2. configure Git for the first time after cloning with your `name` and `email`
 3. `pip install -r requirements.txt` to install all project dependencies
