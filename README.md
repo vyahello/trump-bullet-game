@@ -1,9 +1,15 @@
 # Trump bullet game
-A simple action game written in python.
+> A simple action game written in python.
 
 [![Build Status](https://api.travis-ci.org/vyahello/trump-bullet-game.svg?branch=master)](https://travis-ci.org/vyahello/trump-bullet-game)
 
-# Run a program
+**Tools**
+> - python3.6
+> - pygame
+> - pytest
+> - travis CI
+
+## Usage
 Run script from the root directory of the project:
 ```bash
 python game.py
@@ -13,13 +19,9 @@ python game.py
 ![Screenshot](lib/images/game.png)
 
 ## Run code analysis
-From the root directory of your shell run next command
+From the root directory of your shell run next command:
 ```bash
 ➜ ./code-analysis.sh
-```
-### Code analysis report
-```bash
-(trump-bullet) ➜  trump-bullet git:(master) ✗ ./code-analysis.sh
 Running code analysis...
 Removing __pycache__ directories if present...
 Installing python packages...
@@ -34,11 +36,6 @@ Requirement already satisfied: more-itertools>=4.0.0; python_version > "2.7" in 
 Requirement already satisfied: py>=1.5.0 in /Users/vyah/.pyenv/versions/3.6.5/envs/trump-bullet/lib/python3.6/site-packages (from pytest->-r requirements.txt (line 2)) (1.8.0)
 Running unittests...
 ===================================================================================== test session starts =====================================================================================
-platform darwin -- Python 3.6.5, pytest-4.3.1, py-1.8.0, pluggy-0.9.0 -- /Users/vyah/.pyenv/versions/3.6.5/envs/trump-bullet/bin/python
-cachedir: .pytest_cache
-rootdir: /Users/vyah/files/myprojects/trump-bullet, inifile: pytest.ini
-collected 54 items
-
 tests/controller/test_system.py::test_system_images PASSED                                                                                                                              [  1%]
 tests/controller/test_system.py::test_system_character PASSED                                                                                                                           [  3%]
 tests/controller/test_system.py::test_system_clock PASSED                                                                                                                               [  5%]
@@ -100,12 +97,18 @@ Environment is clean!
 Code analysis is passed.
 ```
 
-# Contributing
+## Meta
+Author – Volodymyr Yahello vyahello@gmail.com
 
-- clone the repository
-- configure Git for the first time after cloning with your name and email
-  ```bash
-  git config --local user.name "Volodymyr Yahello"
-  git config --local user.email "vyahello@gmail.com"
-  ```
-- `python3.6` is required to run the code
+Distributed under the `MIT` license. See [LICENSE](LICENSE.md) for more information.
+
+You can reach out me at:
+* [https://github.com/vyahello](https://github.com/vyahello)
+* [https://www.linkedin.com/in/volodymyr-yahello-821746127](https://www.linkedin.com/in/volodymyr-yahello-821746127)
+
+## Contributing
+1. clone the repository
+2. configure Git for the first time after cloning with your `name` and `email`
+3. `pip install -r requirements.txt` to install all project dependencies
+4. `pip install -r requirements-dev.txt` to install all development dependencies
+

@@ -3,20 +3,20 @@
 TESTS_DIR='tests/'
 
 
-clear_trash(){
+clear-trash(){
     local trash='.pytest_cache'
     [[ -d "$trash" ]] && echo "removing ${trash} testing trash" && rm -rf ${trash} && echo "environment is cleared"
 }
 
 
-function run_unittests {
+function run-unittests {
     pytest ${TESTS_DIR}
 }
 
 
-function start_test_coverage {
-    run_unittests
-    clear_trash
+function start-tests-coverage {
+    run-unittests
+    clear-trash
 }
 
-start_test_coverage
+start-tests-coverage
