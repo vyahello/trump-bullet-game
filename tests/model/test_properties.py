@@ -1,7 +1,7 @@
 from typing import Tuple
 import pytest
-from lib.model.properties import GameProperty, Color, Resolution, Border
-from lib import PropertyError
+from game.model.properties import GameProperty, Color, Resolution, Border
+from game import PropertyError
 
 _rdba_color: Tuple[int, ...] = (1, 2, 3)
 _resolution: Tuple[int, ...] = (10, 20)

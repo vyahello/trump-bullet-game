@@ -15,10 +15,10 @@ Run script from the root directory of the project:
 python game.py
 ```
 
-## Demo
-![Screenshot](lib/images/game.png)
+### Demo
+![Screenshot](images/game.png)
 
-## Run code analysis
+### Run code analysis
 From the root directory of your shell run next command:
 ```bash
 ➜ ./code-analysis.sh
@@ -96,6 +96,10 @@ Removing pytest trash if present...
 Environment is clean!
 Code analysis is passed.
 ```
+
+### Test report
+
+Please open `test-report.html` file after execution of 
 
 ## Meta
 Author – Volodymyr Yahello vyahello@gmail.com

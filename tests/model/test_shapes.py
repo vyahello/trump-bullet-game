@@ -1,5 +1,5 @@
 from typing import Tuple
-from lib.model.shapes import Shape
+from game.model.shapes import Shape
 
 _color: Tuple[int, ...] = (0, 0, 0)
 _resolution: Tuple[int, ...] = (0, 0, 0)

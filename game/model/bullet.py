@@ -1,7 +1,7 @@
 from typing import Tuple
-from lib import PropertyError
-from lib.model.shapes import Circle
-from lib.model.visual import Window
+from game import PropertyError
+from game.model.shapes import Circle
+from game.model.visual import Window
 
 
 class Bullet:

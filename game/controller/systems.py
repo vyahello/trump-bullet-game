@@ -1,18 +1,18 @@
 from abc import ABC, abstractmethod
 from typing import List
-from lib import PropertyError
-from lib.controller.engines import Engine
-from lib.model.bullet import Bullet
-from lib.model.character import Trump, Character
-from lib.model.images import ScreenImages, GameImages
-from lib.model.navigation import Navigation
-from lib.model.properties import (
+from game import PropertyError
+from game.controller.engines import Engine
+from game.model.bullet import Bullet
+from game.model.character import Trump, Character
+from game.model.images import ScreenImages, GameImages
+from game.model.navigation import Navigation
+from game.model.properties import (
     GameProperty,
     Color,
     Border,
     ScreenBorder,
 )
-from lib.model.visual import Display, Window, Clock
+from game.model.visual import Display, Window, Clock
 
 
 class System(ABC):

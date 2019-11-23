@@ -1,6 +1,6 @@
 from typing import Tuple
-from lib.model.properties import Resolution
-from lib.model.visual import GameDisplay
+from game.model.properties import Resolution
+from game.model.visual import GameDisplay
 
 
 _resolution: Tuple[int, ...] = (500, 500)

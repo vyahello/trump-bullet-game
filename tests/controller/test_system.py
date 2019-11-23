@@ -1,9 +1,9 @@
 import pytest
-from lib import PropertyError
-from lib.controller.systems import SystemProperty
-from lib.model.character import Character
-from lib.model.images import ScreenImages
-from lib.model.visual import Clock
+from game import PropertyError
+from game.controller.systems import SystemProperty
+from game.model.character import Character
+from game.model.images import ScreenImages
+from game.model.visual import Clock
 
 
 def test_system_images(system_property: SystemProperty) -> None:

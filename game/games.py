@@ -1,9 +1,9 @@
 from abc import ABC, abstractmethod
 from typing import Tuple
-from lib.controller.engines import GameEngine, Engine
-from lib.model.properties import Resolution
-from lib.controller.systems import UsableGameSystem
-from lib.model.visual import GameDisplay
+from game.controller.engines import GameEngine, Engine
+from game.model.properties import Resolution
+from game.controller.systems import UsableGameSystem
+from game.model.visual import GameDisplay
 
 
 class Game(ABC):

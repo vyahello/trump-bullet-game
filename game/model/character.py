@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from lib import PropertyError
+from game import PropertyError
 
 
 class Character(ABC):

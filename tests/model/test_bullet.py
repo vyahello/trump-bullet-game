@@ -1,6 +1,6 @@
 import pytest
-from lib import PropertyError
-from lib.model.bullet import Bullet
+from game import PropertyError
+from game.model.bullet import Bullet
 
 
 def test_bullet_velocity(bullet: Bullet) -> None:

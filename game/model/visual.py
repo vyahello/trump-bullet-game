@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import Tuple
 from pygame import display, Surface, time
-from lib.model.properties import Resolution
+from game.model.properties import Resolution
 
 
 class Window(ABC):
