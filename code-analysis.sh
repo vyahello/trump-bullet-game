@@ -37,7 +37,7 @@ function run-unittests {
 
 
 function run-black-analysis {
-    echo "Running black analysis ..." && ( black --check "${PROJECT_FILES}" )
+    echo "Running black analysis ..." && ( black --check "./" )
 }
 
 
