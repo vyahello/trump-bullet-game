@@ -4,6 +4,9 @@
 [![Build Status](https://api.travis-ci.org/vyahello/trump-bullet-game.svg?branch=master)](https://travis-ci.org/vyahello/trump-bullet-game)
 [![Coverage Status](https://coveralls.io/repos/github/vyahello/trump-bullet-game/badge.svg?branch=master)](https://coveralls.io/github/vyahello/trump-bullet-game?branch=master)
 
+[![EO principles respected here](https://www.elegantobjects.org/badge.svg)](https://www.elegantobjects.org)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE.md)
+
 **Tools**
 > - python3.6
 > - pygame
