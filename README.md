@@ -6,6 +6,7 @@
 
 [![EO principles respected here](https://www.elegantobjects.org/badge.svg)](https://www.elegantobjects.org)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE.md)
+[![Hits-of-Code](https://hitsofcode.com/github/vyahello/trump-bullet-game)](https://hitsofcode.com/view/github/vyahello/trump-bullet-game)
 
 **Tools**
 > - python3.6
