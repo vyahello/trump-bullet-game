@@ -3,13 +3,12 @@
 
 [![Build Status](https://api.travis-ci.org/vyahello/trump-bullet-game.svg?branch=master)](https://travis-ci.org/vyahello/trump-bullet-game)
 [![Coverage Status](https://coveralls.io/repos/github/vyahello/trump-bullet-game/badge.svg?branch=master)](https://coveralls.io/github/vyahello/trump-bullet-game?branch=master)
-
 [![EO principles respected here](https://www.elegantobjects.org/badge.svg)](https://www.elegantobjects.org)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE.md)
 [![Hits-of-Code](https://hitsofcode.com/github/vyahello/trump-bullet-game)](https://hitsofcode.com/view/github/vyahello/trump-bullet-game)
 
 **Tools**
-> - python3.6
+> - python3.6+ 
 > - pygame
 > - pytest
 > - travis CI
@@ -18,6 +17,11 @@
 ## Usage
 Run script from the root directory of the project:
 ```bash
+git clone git@github.com:vyahello/trump-bullet-game.git
+cd trump-bullet-game
+python3 -m venv venv
+. venv/bin/activate
+pip install -r requirements.txt
 python game.py
 ```
 
@@ -27,17 +31,17 @@ python game.py
 ### Run code analysis
 From the root directory of your shell run next command:
 ```bash
-➜ ./code-analysis.sh
+./code-analysis.sh
 ```
 
 ### Test report
 If you need to run only unittests please execute following command:
 ```bash
-➜ pytest
+pytest
 ```
 Or run dedicated shell script:
 ```bash
-➜ ./run-unittests.sh
+./run-unittests.sh
 ```
 
 Both approaches use [pytest.ini](pytest.ini) config file to setup execution.
