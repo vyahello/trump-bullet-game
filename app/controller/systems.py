@@ -15,6 +15,9 @@ from app.model.properties import (
 from app.model.visual import Display, Window, Clock
 
 
+IMAGES_PATH = "images/"
+
+
 class System(ABC):
     """Represents system abstraction."""
 
@@ -156,7 +159,7 @@ class UsableGameSystem(System):
         self._engine: Engine = engine
         self._display: Display = display
         self._system: System = _InternalGameSystem(
-            engine, display, GameImages(initial_path="lib/images/"), Trump()
+            engine, display, GameImages(initial_path=IMAGES_PATH), Trump()
         )
 
     def start(self) -> None:
